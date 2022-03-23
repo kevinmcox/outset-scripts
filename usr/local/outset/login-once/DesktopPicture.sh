@@ -1,7 +1,7 @@
 #!/bin/zsh
 
-## Version 2.1
-## Compiled by Kevin M. Cox
+## Version 2.2
+## by Kevin M. Cox
 
 ## Sets the initial desktop picture for all users at first login
 ## Should be set in Munki to REQUIRE the custom DesktopPictures.pkg, Outset and Desktoppr
@@ -17,6 +17,6 @@ done
 
 /bin/sleep 5
 
-# Set the user's desktop picture as The Daily News 175th Anniversary logo
+# Set the user's desktop picture as The Daily News 180th Anniversary logo
 
-/usr/local/bin/desktoppr "/Library/Desktop Pictures/GalvNews 175 Years.png"
+/usr/local/bin/desktoppr "/Library/Desktop Pictures/GalvNews 180 Years A.png"
