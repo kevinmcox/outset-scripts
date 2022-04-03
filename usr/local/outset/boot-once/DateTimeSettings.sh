@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/zsh
 
-## Version 1.0
-## Compiled by Kevin M. Cox
+## Version 1.1
+## by Kevin M. Cox
 
-## Sets the time zone, closest city, NTP servers and enables network time syncing
+## Sets the time zone, closest city, NTP server and enables network time syncing
 
 # Set the Time Zone to Central
 
@@ -11,14 +11,17 @@
 
 # Set the Closest City to Houston, Texas
 
-/usr/bin/defaults write /Library/Preferences/.GlobalPreferences com.apple.preferences.timezone.new.selected_city "tuxrws"
+/usr/bin/defaults write /Library/Preferences/.GlobalPreferences com.apple.TimeZonePref.Last_Selected_City -array "29.7608" "-95.36951" "0" "America/Chicago" "US" "Houston" "U.S.A." "Houston" "U.S.A." "DEPRECATED IN 10.6"
+
+/usr/bin/defaults write /Library/Preferences/.GlobalPreferences com.apple.preferences.timezone.new.selected_city "\032t\020\032u\024\033x\024\034r\020\035w\024\032s\024"
+
+/usr/bin/defaults write /Library/Preferences/.GlobalPreferences com.apple.preferences.timezone.selected_city -dict AppleMapID "\032t\020\032u\024\033x\024\034r\020\035w\024\032s\024"
 
 echo Closest City: Houston, Texas
 
-# Set the Time Servers (one internal, one external)
+# Set the Time Server
 
-/usr/sbin/systemsetup -setnetworktimeserver "time.example.net
-server time.apple.com"
+/usr/sbin/systemsetup -setnetworktimeserver time.apple.com
 
 # Enable NTP syncing
 
