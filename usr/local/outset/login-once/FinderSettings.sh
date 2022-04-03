@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/zsh
 
-## Version 1.0
+## Version 1.1
 ## Compiled by Kevin M. Cox
 
 ## Sets the initial Finder settings for users at first login.
@@ -21,7 +21,7 @@
 
 # Set Default Finder Location to Home Folder
 
-/usr/bin/defaults write com.apple.finder NewWindowTarget -string "PfLo" && \
+/usr/bin/defaults write com.apple.finder NewWindowTarget -string "PfLo"
 /usr/bin/defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
 
 # Use list view in all Finder windows by default
@@ -49,11 +49,7 @@
 
 /usr/bin/defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
-# Disable the "Reopen windows when logging back in" logout checkbox
+# Uncheck the "Reopen windows when logging back in" logout checkbox
 
 /usr/bin/defaults write com.apple.loginwindow TALLogoutSavesState -bool false
 /usr/bin/defaults write com.apple.loginwindow LoginwindowLaunchesRelaunchApps -bool false
-
-# Prevent Time Machine from prompting to use new hard drives as Backup Volume
-
-/usr/bin/defaults write /Library/Preferences/com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
