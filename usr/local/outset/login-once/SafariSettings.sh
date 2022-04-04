@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/zsh
 
-## Version 1.0
+## Version 1.1
 ## Compiled by Kevin M. Cox
 
 ## Sets the initial Safari settings for users the first time they login
@@ -8,25 +8,21 @@
 
 # Prevent Safari from opening 'safe' files automatically after downloading
 
-/usr/bin/defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
-
-# Show full URL in Safari
-
-/usr/bin/defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+/usr/bin/defaults write ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari.plist AutoOpenSafeDownloads -bool false
 
 # Show status bar
 
-/usr/bin/defaults write com.apple.Safari ShowStatusBar -bool true
-/usr/bin/defaults write com.apple.Safari ShowStatusBarInFullScreen -bool true
+/usr/bin/defaults write ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari.plist ShowStatusBar -bool true
+/usr/bin/defaults write ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari.plist ShowStatusBarInFullScreen -bool true
 
 # Set Safari's home page
 
-/usr/bin/defaults write com.apple.Safari HomePage -string "https://www.galvnews.com"
+/usr/bin/defaults write ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari.plist HomePage -string "https://www.galvnews.com"
 
-# Set new Safari windows to open to Safari’s default homepage:
+# Set new Safari windows to open the Homepage:
 
-/usr/bin/defaults write com.apple.Safari NewWindowBehavior -int 0 
+/usr/bin/defaults write ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari.plist NewWindowBehavior -int 0 
 
-# Set new Safari tabs to open to an empty page:
+# Set new Safari tabs to open the Start Page:
 
-/usr/bin/defaults write com.apple.Safari NewTabBehavior -int 1
+/usr/bin/defaults write ~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari.plist NewTabBehavior -int 4
