@@ -1,27 +1,33 @@
-#!/bin/bash
+#!/bin/zsh
 
-## Version 1.0
-## Compiled by Kevin M. Cox
+## Sets initial Menu Bar options for users the first time they login
 
-## Sets the initial Menu Bar settings for users the first time they login
-## These settings can then be changed by users
+## Version 1.1
+## by Kevin M. Cox
 
-# Show Battery percentage
 
-/usr/bin/defaults write com.apple.menuextra.battery ShowPercent -bool true
+# Show Battery percentage in Menu bar, works for internal batteries and UPS
 
-# Show Day Month Date Time AM/PM in the Menu Clock
+/usr/bin/defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
+
+# Show Day Month Date Time AM/PM and flash the time separators in the Menu Clock
 
 /usr/bin/defaults write com.apple.menuextra.clock DateFormat 'EEE MMM d  h:mm a'
-
-# Flash the Menu Clock time separators
-
 /usr/bin/defaults write com.apple.menuextra.clock FlashDateSeparators -bool true
+/usr/bin/defaults write com.apple.menuextra.clock ShowAMPM -bool true
+/usr/bin/defaults write com.apple.menuextra.clock ShowDayOfMonth -bool true
+/usr/bin/defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
 
-# Show Volume in menu bar
+# Always show Sound in Menu Bar
+/usr/bin/defaults -currentHost write com.apple.controlcenter Sound -int 16
 
-/usr/bin/defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Volume.menu"
+# Hide WiFi in Menu Bar for desktops
 
-# Restart the SystemUIServer so the Volume icon shows up right away
+# Is the computer a notebook?
+NotebookCheck=$(sysctl -n hw.model | grep Book)
 
-killall SystemUIServer -HUP
+if
+	[ -z $NotebookCheck ]
+	then # Hide WiFi in the Menu Bar for desktops
+	/usr/bin/defaults -currentHost write com.apple.controlcenter WiFi -int 8
+fi
